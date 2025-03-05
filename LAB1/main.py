@@ -43,4 +43,26 @@ for j in range(x):
             # print(f"{rows_d[i]}, {cols_d[j]}")
             break
 
+=-------------------------------------------------------
 
+with open("dane/values.txt", "r") as f:
+    data = [list(map(int, line.split())) for line in f]
+
+kolumny = ["a1", "a2", "a3", "a4", "a5", "a6", "d"]
+wiersze = [f"o{i + 1}" for i in range(len(data))]
+
+atrybuty = len(kolumny) - 1
+obiekty = len(wiersze)
+
+print("Liczba atrybutów:", atrybuty)
+print("Liczba obiektów:", obiekty)
+
+for i in range(obiekty):
+    print("\nObiekt:", wiersze[i], data[i])
+
+    for j in range(atrybuty):
+        print(f"[{wiersze[i]}, {kolumny[j]}] = {data[i][j]} -> decyzja {data[i][-1]}")
+
+        if data[i][-1] == 0 and data[i][j] == data[i][0]:
+            print(f"Break na [{wiersze[i]}, {kolumny[j]}] = {data[i][j]}")
+            break
